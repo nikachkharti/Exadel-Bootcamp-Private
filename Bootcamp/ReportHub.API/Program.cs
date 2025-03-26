@@ -1,3 +1,4 @@
+using ReportHub.API.Extensions;
 
 namespace ReportHub.API
 {
@@ -7,27 +8,21 @@ namespace ReportHub.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.AddControllers();
+            //builder.AddOpenApi();
+            builder.AddSwagger();
+            builder.AddInfrastructureLayer();
 
-            builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.MapOpenApi();
-            }
-
+            //app.MapOpenApi();
+            app.UseDataSeeder();
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
-
             app.Run();
         }
     }
