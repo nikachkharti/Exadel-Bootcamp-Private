@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using ReportHub.Application.Contracts;
+using ReportHub.Application.Contracts.Repository;
 using ReportHub.Domain.Entities;
 
 namespace ReportHub.Infrastructure.Middleware

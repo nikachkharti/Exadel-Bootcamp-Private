@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
-using ReportHub.Application.Contracts;
+using ReportHub.Application.Contracts.Repository;
 using ReportHub.Domain.Entities;
 using ReportHub.Infrastructure.Helper;
 

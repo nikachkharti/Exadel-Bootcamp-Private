@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ReportHub.Application.Contracts;
+using ReportHub.Application.Contracts.Repository;
 using ReportHub.Infrastructure.Helper;
 using ReportHub.Infrastructure.Repository;
 
