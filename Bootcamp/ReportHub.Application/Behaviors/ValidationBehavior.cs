@@ -2,7 +2,7 @@
 using MediatR;
 using ReportHub.Application.Contracts.CQRS;
 
-namespace ReportHub.Application.Contracts.Behaviors
+namespace ReportHub.Application.Behaviors
 {
     public class ValidationBehavior<TRequest, TResponse>
         (IEnumerable<IValidator<TRequest>> validators)

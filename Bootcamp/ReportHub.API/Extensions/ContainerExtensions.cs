@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using ReportHub.Application;
+using ReportHub.Application.Exceptions.Handler;
 using ReportHub.Infrastructure;
 using System.Reflection;
 
@@ -60,6 +62,11 @@ namespace ReportHub.API.Extensions
         public static void AddInfrastructureLayer(this WebApplicationBuilder builder)
         {
             builder.Services.AddInfrastructure(builder.Configuration);
+        }
+
+        public static void AddApplicationLayer(this WebApplicationBuilder builder)
+        {
+            builder.Services.AddApplication(typeof(Program).Assembly);
         }
     }
 }

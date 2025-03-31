@@ -12,6 +12,7 @@ namespace ReportHub.API
             //builder.AddOpenApi();
             builder.AddSwagger();
             builder.AddInfrastructureLayer();
+            builder.AddApplicationLayer();
 
 
             var app = builder.Build();
@@ -23,6 +24,7 @@ namespace ReportHub.API
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
+            app.UseExceptionHandler(options => { });
             app.Run();
         }
     }
