@@ -28,10 +28,20 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
 
-      - name: Build and push Docker images
+      - name: Build the Docker image
+        run: |
+          docker build -t registry.heroku.com/$HEROKU_APP_NAME/web .
+
+      - name: Push Docker image to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: bootcamp-report-hub
         run: |
-          heroku container:push web -a $HEROKU_APP_NAME
+          docker push registry.heroku.com/$HEROKU_APP_NAME/web
+
+      - name: Release the container
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP_NAME: bootcamp-report-hub
+        run: |
           heroku container:release web -a $HEROKU_APP_NAME
