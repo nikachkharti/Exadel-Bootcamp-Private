@@ -19,7 +19,7 @@ namespace ReportHub.Application
 
 
             //Add custom exception handler service
-            services.AddExceptionHandler<CustomExceptionHandler>();
+            //services.AddExceptionHandler<CustomExceptionHandler>();
 
 
             return services;
