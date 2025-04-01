@@ -22,6 +22,9 @@ COPY Bootcamp/ReportHub.Infrastructure/ReportHub.Infrastructure.csproj ReportHub
 # Restore dependencies
 RUN dotnet restore "ReportHub.API/ReportHub.API.csproj"
 
+# Copy the rest of the application files
+COPY Bootcamp/ .
+
 WORKDIR "/src/ReportHub.API"
 
 # Build the project
