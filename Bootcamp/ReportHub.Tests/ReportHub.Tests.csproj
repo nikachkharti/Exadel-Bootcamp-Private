@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<IsPackable>false</IsPackable>
@@ -17,9 +17,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ReportHub.Application\ReportHub.Application.csproj" />
-		<ProjectReference Include="..\ReportHub.Domain\ReportHub.Domain.csproj" />
-		<ProjectReference Include="..\ReportHub.Infrastructure\ReportHub.Infrastructure.csproj" />
+	  <ProjectReference Include="..\ReportHub.Application\ReportHub.Application.csproj" />
+	  <ProjectReference Include="..\ReportHub.Domain\ReportHub.Domain.csproj" />
+	  <ProjectReference Include="..\ReportHub.Infrastructure\ReportHub.Infrastructure.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
