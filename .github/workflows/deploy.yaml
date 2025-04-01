@@ -12,10 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Find Dockerfile
+        run: find . -name "Dockerfile"
+
       - name: Verify Dockerfile exists
         run: |
-          if [ ! -f Dockerfile ]; then echo "❌ Dockerfile not found!"; exit 1; fi
-          echo "✅ Dockerfile found!"
+          if [ ! -f Bootcamp/ReportHub.API/Dockerfile ]; then echo "❌ Dockerfile not found!"; exit 1; fi
+          echo "✅ Dockerfile found at Bootcamp/ReportHub.API/"
 
       - name: Install Heroku CLI
         run: |
@@ -28,7 +31,7 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
+          docker build -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web -f Bootcamp/ReportHub.API/Dockerfile Bootcamp/ReportHub.API/
 
       - name: Push Docker image to Heroku
         run: |
