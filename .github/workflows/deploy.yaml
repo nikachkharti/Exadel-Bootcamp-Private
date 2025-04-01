@@ -16,6 +16,13 @@ jobs:
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
 
+      - name: Set Heroku stack to container
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP_NAME: bootcamp-report-hub
+        run: |
+          heroku stack:set container -a $HEROKU_APP_NAME
+
       - name: Log in to Heroku Container Registry
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
