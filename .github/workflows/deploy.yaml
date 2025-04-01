@@ -19,29 +19,25 @@ jobs:
       - name: Set Heroku stack to container
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: bootcamp-report-hub
         run: |
-          heroku stack:set container -a $HEROKU_APP_NAME
+          heroku stack:set container -a ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Log in to Heroku Container Registry
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
 
+      - name: Verify HEROKU_APP_NAME
+        run: echo "${{ secrets.HEROKU_APP_NAME }}"
+
       - name: Build the Docker image
         run: |
-          docker build -t registry.heroku.com/$HEROKU_APP_NAME/web .
+          docker build -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
 
       - name: Push Docker image to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: bootcamp-report-hub
         run: |
-          docker push registry.heroku.com/$HEROKU_APP_NAME/web
+          docker push registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
 
       - name: Release the container
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: bootcamp-report-hub
         run: |
-          heroku container:release web -a $HEROKU_APP_NAME
+          heroku container:release web -a ${{ secrets.HEROKU_APP_NAME }}
