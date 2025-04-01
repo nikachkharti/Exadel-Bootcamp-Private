@@ -1,4 +1,4 @@
-name: Deploy to Heroku
+﻿name: Deploy to Heroku
 
 on:
   push:
@@ -12,23 +12,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Verify Dockerfile exists
+        run: |
+          if [ ! -f Dockerfile ]; then echo "❌ Dockerfile not found!"; exit 1; fi
+          echo "✅ Dockerfile found!"
+
       - name: Install Heroku CLI
         run: |
           curl https://cli-assets.heroku.com/install.sh | sh
-
-      - name: Set Heroku stack to container
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-          heroku stack:set container -a ${{ secrets.HEROKU_APP_NAME }}
 
       - name: Log in to Heroku Container Registry
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
-
-      - name: Verify HEROKU_APP_NAME
-        run: echo "${{ secrets.HEROKU_APP_NAME }}"
 
       - name: Build the Docker image
         run: |
