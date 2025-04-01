@@ -12,10 +12,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["ReportHub.API/ReportHub.API.csproj", "ReportHub.API/"]
-COPY ["ReportHub.Application/ReportHub.Application.csproj", "ReportHub.Application/"]
-COPY ["ReportHub.Domain/ReportHub.Domain.csproj", "ReportHub.Domain/"]
-COPY ["ReportHub.Infrastructure/ReportHub.Infrastructure.csproj", "ReportHub.Infrastructure/"]
+COPY ["../ReportHub.API/ReportHub.API.csproj", "ReportHub.API/"]
+COPY ["../ReportHub.Application/ReportHub.Application.csproj", "ReportHub.Application/"]
+COPY ["../ReportHub.Domain/ReportHub.Domain.csproj", "ReportHub.Domain/"]
+COPY ["../ReportHub.Infrastructure/ReportHub.Infrastructure.csproj", "ReportHub.Infrastructure/"]
 RUN dotnet restore "./ReportHub.API/ReportHub.API.csproj"
 COPY . .
 WORKDIR "/src/ReportHub.API"
