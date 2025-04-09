@@ -1,6 +1,0 @@
-services:
-  reportHubDbMongo:
-    image: mongo:latest
-
-volumes:
-  reportHubPrivateMongo_vol:
