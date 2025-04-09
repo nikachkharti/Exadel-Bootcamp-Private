@@ -22,6 +22,6 @@ namespace ReportHub.Domain.Entities
         [BsonRepresentation(BsonType.ObjectId)]
         public string BankAccountId { get; set; } // Reference to BankAccount
 
-        public List<InvoiceItem> Items { get; set; } = new();
+        public List<InvoiceItem> Items { get; set; }
     }
 }

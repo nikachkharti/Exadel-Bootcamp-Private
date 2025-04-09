@@ -14,6 +14,8 @@ namespace ReportHub.Infrastructure
             services.Configure<MongoDbSettings>(configuration.GetSection("MongoDB"));
 
             // Register repositories
+            services.AddScoped<IBankAccountRepository, BankAccountRepository>();
+            services.AddScoped<IItemRepository, ItemRepository>();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 
             return services;

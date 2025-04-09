@@ -5,9 +5,9 @@ using ReportHub.Infrastructure.Helper;
 
 namespace ReportHub.Infrastructure.Repository
 {
-    public class InvoiceRepository : MongoRepositoryBase<Invoice>, IInvoiceRepository
+    public class BankAccountRepository : MongoRepositoryBase<BankAccount>, IBankAccountRepository
     {
-        public InvoiceRepository(IOptions<MongoDbSettings> options) : base(options, "Invoices")
+        public BankAccountRepository(IOptions<MongoDbSettings> options) : base(options, "BankAccounts")
         {
         }
     }
