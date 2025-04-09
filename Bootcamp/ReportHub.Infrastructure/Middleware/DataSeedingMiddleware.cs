@@ -133,6 +133,7 @@ namespace ReportHub.Infrastructure.Middleware
                     {
                         new Invoice()
                         {
+                            Id = "507f191e810c19729de860ea",
                             InvoiceId = "INV2025001",
                             IssueDate = DateTime.UtcNow.AddDays(-10),
                             DueDate = DateTime.UtcNow.AddDays(20),
@@ -158,6 +159,7 @@ namespace ReportHub.Infrastructure.Middleware
                         },
                         new Invoice()
                         {
+                            Id= "60c72b2f9e3b3c001f847f29",
                             InvoiceId = "INV2025002",
                             IssueDate = DateTime.UtcNow.AddDays(-15),
                             DueDate = DateTime.UtcNow.AddDays(15),
@@ -177,6 +179,7 @@ namespace ReportHub.Infrastructure.Middleware
                         },
                         new Invoice()
                         {
+                            Id= "60b8c2d1d58d4e1ba98e9f84",
                             InvoiceId = "INV2025003",
                             IssueDate = DateTime.UtcNow.AddDays(-5),
                             DueDate = DateTime.UtcNow.AddDays(30),
