@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
 using ReportHub.Application;
 using ReportHub.Infrastructure;
 using System.Reflection;
@@ -66,6 +69,13 @@ namespace ReportHub.API.Extensions
         public static void AddApplicationLayer(this WebApplicationBuilder builder)
         {
             builder.Services.AddApplication();
+        }
+
+        public static void AddMongoSerizliers(this WebApplicationBuilder builder)
+        {
+            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
+            BsonSerializer.RegisterSerializer(new DateTimeSerializer(BsonType.String));
+            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
         }
     }
 }

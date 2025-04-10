@@ -1,6 +1,3 @@
-using MongoDB.Bson.Serialization.Serializers;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson;
 using ReportHub.API.Extensions;
 
 namespace ReportHub.API
@@ -11,10 +8,7 @@ namespace ReportHub.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
-            BsonSerializer.RegisterSerializer(new DateTimeSerializer(BsonType.String));
-            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
-
+            builder.AddMongoSerizliers();
             builder.AddControllers();
             //builder.AddOpenApi();
             builder.AddSwagger();
