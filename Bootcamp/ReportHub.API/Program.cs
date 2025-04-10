@@ -21,7 +21,10 @@ namespace ReportHub.API
             app.UseDataSeeder();
             app.UseSwagger();
             app.UseSwaggerUI();
-            app.UseHttpsRedirection();
+            if (builder.Environment.IsDevelopment())
+            {
+                app.UseHttpsRedirection();
+            }
             app.UseAuthorization();
             app.MapControllers();
             app.UseExceptionHandler(options => { });
