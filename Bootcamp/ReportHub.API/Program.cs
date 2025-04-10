@@ -8,10 +8,10 @@ namespace ReportHub.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.AddMongoSerizliers();
             builder.AddControllers();
             //builder.AddOpenApi();
             builder.AddSwagger();
+            builder.AddMongoSerizliers();
             builder.AddInfrastructureLayer();
             builder.AddApplicationLayer();
 
