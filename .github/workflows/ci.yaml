@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: 📥 Checkout code
@@ -19,16 +19,11 @@ jobs:
       with:
         dotnet-version: '9.0.x'
 
-    - name: Install OpenSSL 1.1
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y libssl1.1 || sudo apt-get install -y libssl1.1=1.1.1f-1ubuntu2.22
-
     - name: 📦 Restore dependencies
-      run: dotnet restore Bootcamp/Bootcamp.sln
+      run: dotnet restore ReportHub/ReportHub.sln
 
     - name: 🔨 Build solution
-      run: dotnet build Bootcamp/Bootcamp.sln --configuration Release --no-restore
+      run: dotnet build ReportHub/ReportHub.sln --configuration Release --no-restore
 
     - name: 🧪 Run tests
-      run: dotnet test Bootcamp/Bootcamp.sln --configuration Release --no-build --logger:"console;verbosity=detailed"
+      run: dotnet test ReportHub/ReportHub.sln --configuration Release --no-build --logger:"console;verbosity=detailed"
